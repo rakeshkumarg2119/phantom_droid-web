@@ -1,0 +1,51 @@
+:root {
+  --bg: #07080a;
+  --surface: #0e1113;
+  --surface-raised: #14181b;
+  --line: #1e2427;
+  --text: #e6ebe9;
+  --text-dim: #7d8a87;
+  --phosphor: #4dffa8;
+  --phosphor-dim: #2a8f66;
+  --danger: #ff5c5c;
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+  --sans: -apple-system, 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--phosphor-dim);
+  color: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
