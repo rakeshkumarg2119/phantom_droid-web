@@ -1,5 +1,5 @@
 // Signaling server. Override at build/deploy time with VITE_SIGNAL_URL.
-export const SIGNAL_URL = import.meta.env.VITE_SIGNAL_URL || 'ws://localhost:8000/ws'
+export const SIGNAL_URL = import.meta.env.VITE_SIGNAL_URL || 'wss://phantom-droid-backend.onrender.com/ws'
 
 // STUN/TURN. Add TURN creds via env when crossing networks.
 export const ICE_SERVERS = [
