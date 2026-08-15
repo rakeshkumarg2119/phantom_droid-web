@@ -1,16 +1,37 @@
-# React + Vite
+<p align="center">
+  <img src="../../phantom_droid.png" alt="Phantom Droid Logo" width="200" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1 align="center">Phantom Droid - Web Portal</h1>
 
-Currently, two official plugins are available:
+<p align="center">
+  <a href="http://localhost:5173">
+    <img src="https://img.shields.io/badge/Launch_Website-0969da?style=for-the-badge&logo=react" alt="Launch Website" />
+  </a>
+  <a href="../../build/app/outputs/flutter-apk/app-debug.apk">
+    <img src="https://img.shields.io/badge/Download_App_APK-2ea44f?style=for-the-badge&logo=android" alt="Download APK" />
+  </a>
+</p>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+The **Phantom Droid Web Portal** is the receiving end of the screen cast. Built with React and Vite, it connects to your phone's WebRTC broadcast, displaying a smooth, zero-latency feed of your Android device right in your browser.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
+- 🎛️ **Intuitive Control Bar**: Easily navigate your phone with on-screen back, home, and recents buttons.
+- 🔊 **Dynamic Audio Routing**: Use the 3-way toggle switch to choose where the audio plays (Phone, PC, or Muted).
+- 🖱️ **Full Input Forwarding**: Click and drag your mouse across the video feed to control your phone.
 
-## Expanding the ESLint configuration
+## How to Run
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Ensure you have Node.js installed, then run:
+
+```bash
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+Once running, click the **Launch Website** badge above or open `https://phantom-droid-web.vercel.app/` in your browser.
