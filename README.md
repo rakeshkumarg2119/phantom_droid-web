@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="../../phantom_droid.png" alt="Phantom Droid Logo" width="200" />
+  <img src="../../phantom_droid.png" alt="Phantom Droid Logo" width="300" />
 </p>
 
 <h1 align="center">Phantom Droid - Web Portal</h1>
 
 <p align="center">
-  <a href="http://localhost:5173">
+  <a href="https://phantom-droid-web.vercel.app/">
     <img src="https://img.shields.io/badge/Launch_Website-0969da?style=for-the-badge&logo=react" alt="Launch Website" />
   </a>
-  <a href="../../build/app/outputs/flutter-apk/app-debug.apk">
+  <a href="../../build/app/outputs/flutter-apk/phantom-droid.apk">
     <img src="https://img.shields.io/badge/Download_App_APK-2ea44f?style=for-the-badge&logo=android" alt="Download APK" />
   </a>
 </p>
