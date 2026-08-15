@@ -8,7 +8,7 @@
   <a href="https://phantom-droid-web.vercel.app/">
     <img src="https://img.shields.io/badge/Launch_Website-0969da?style=for-the-badge&logo=react" alt="Launch Website" />
   </a>
-  <a href="../../build/app/outputs/flutter-apk/phantom-droid.apk">
+  <a href="https://github.com/rakeshkumarg2119/Phantom-Droid/releases/download/v1.0.0/phantom-droid.apk">
     <img src="https://img.shields.io/badge/Download_App_APK-2ea44f?style=for-the-badge&logo=android" alt="Download APK" />
   </a>
 </p>
