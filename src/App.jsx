@@ -41,6 +41,11 @@ export default function App() {
       teardown()
     })
 
+    signaling.on('peer-joined', () => {
+      // Echo it back to bypass backend bug where it sends this to the wrong peer
+      signaling.send({ type: 'peer-joined' })
+    })
+
     signaling.on('closed', () => {
       setStatus((prev) => (prev === 'connected' ? 'error' : prev))
     })
