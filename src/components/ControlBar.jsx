@@ -1,6 +1,18 @@
 import './ControlBar.css'
 
-export default function ControlBar({ visible, onGlobalAction, onToggleFullscreen, onDisconnect }) {
+export default function ControlBar({ visible, audioMode, onCycleAudio, onGlobalAction, onToggleFullscreen, onDisconnect }) {
+  const audioIcon = {
+    phone: '📱',
+    pc: '💻',
+    mute: '🔇'
+  }[audioMode] || '📱'
+
+  const audioTitle = {
+    phone: 'Audio: Phone Only',
+    pc: 'Audio: PC',
+    mute: 'Audio: Muted'
+  }[audioMode] || ''
+
   return (
     <div className={`control-bar ${visible ? 'control-bar--visible' : ''}`}>
       <button className="control-bar__btn" onClick={() => onGlobalAction('back')} title="Back">
@@ -11,6 +23,10 @@ export default function ControlBar({ visible, onGlobalAction, onToggleFullscreen
       </button>
       <button className="control-bar__btn" onClick={() => onGlobalAction('recents')} title="Recents">
         ▢
+      </button>
+      <span className="control-bar__divider" />
+      <button className="control-bar__btn" onClick={onCycleAudio} title={audioTitle}>
+        {audioIcon}
       </button>
       <span className="control-bar__divider" />
       <button className="control-bar__btn" onClick={() => onGlobalAction('rotate_portrait')} title="Force portrait">

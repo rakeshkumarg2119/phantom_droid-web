@@ -11,6 +11,7 @@ export default function VideoStream({ stream, remoteResolution, webrtcClient, on
   const mapperRef = useRef(null)
   const idleTimer = useRef(null)
   const [controlsVisible, setControlsVisible] = useState(true)
+  const [audioMode, setAudioMode] = useState('phone') // phone | pc | mute
 
   useEffect(() => {
     if (videoRef.current) videoRef.current.srcObject = stream
@@ -56,11 +57,29 @@ export default function VideoStream({ stream, remoteResolution, webrtcClient, on
     mapperRef.current?.sendGlobalAction(action)
   }
 
+  const cycleAudio = () => {
+    setAudioMode(prev => {
+      if (prev === 'phone') return 'pc'
+      if (prev === 'pc') return 'mute'
+      return 'phone'
+    })
+  }
+
+  const isVideoMuted = audioMode !== 'pc'
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isVideoMuted
+    }
+  }, [isVideoMuted])
+
   return (
     <div className="video-stream" ref={containerRef}>
-      <video ref={videoRef} className="video-stream__video" autoPlay playsInline muted={false} />
+      <video ref={videoRef} className="video-stream__video" autoPlay playsInline />
       <ControlBar
         visible={controlsVisible}
+        audioMode={audioMode}
+        onCycleAudio={cycleAudio}
         onGlobalAction={handleGlobalAction}
         onToggleFullscreen={toggleFullscreen}
         onDisconnect={onDisconnect}

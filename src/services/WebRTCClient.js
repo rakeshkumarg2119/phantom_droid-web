@@ -10,6 +10,8 @@ export default class WebRTCClient {
     this.onDataChannelOpen = null // () => void
     this.onRemoteResolution = null // ({ width, height }) => void
     this.onConnectionState = null // (state) => void
+    
+    this.pendingCandidates = []
 
     this.signaling.on('offer', (msg) => this._handleOffer(msg.sdp))
     this.signaling.on('ice-candidate', (msg) => this._handleRemoteIce(msg.candidate))
@@ -61,17 +63,27 @@ export default class WebRTCClient {
   async _handleOffer(sdp) {
     const pc = this._createPeerConnection()
     await pc.setRemoteDescription(new RTCSessionDescription(sdp))
+    
+    for (const candidate of this.pendingCandidates) {
+      await pc.addIceCandidate(new RTCIceCandidate(candidate)).catch(console.error)
+    }
+    this.pendingCandidates = []
+
     const answer = await pc.createAnswer()
     await pc.setLocalDescription(answer)
     this.signaling.sendAnswer(pc.localDescription)
   }
 
   async _handleRemoteIce(candidate) {
-    if (!candidate || !this.pc) return
+    if (!candidate) return
+    if (!this.pc || !this.pc.remoteDescription) {
+      this.pendingCandidates.push(candidate)
+      return
+    }
     try {
       await this.pc.addIceCandidate(new RTCIceCandidate(candidate))
-    } catch {
-      // candidate arrived before remote description — safe to drop
+    } catch (e) {
+      console.error('Error adding ICE candidate:', e)
     }
   }
 
